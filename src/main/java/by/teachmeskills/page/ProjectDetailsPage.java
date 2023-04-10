@@ -7,10 +7,13 @@ import static com.codeborne.selenide.Selenide.$;
 
 public class ProjectDetailsPage {
     public void signOut() {
-      $(By.xpath("//span[@class='Eb2vGG']")).shouldBe(enabled).click();
-      $(By.xpath("//span[text()='Sign out']")).shouldBe(enabled).click();
+        $(By.xpath("//img[@alt='QA_19_Anufrik_Andrei']//ancestor::span")).shouldBe(enabled).click();
+        $(By.xpath("//span[text()='Sign out']")).shouldBe(enabled).click();
     }
-    // id("Logo")
 
+    // id("Logo")
+    public boolean exitPageIsVisible() {
+        return $(By.xpath("//a[@class='logo']")).isDisplayed();
+    }
 
 }

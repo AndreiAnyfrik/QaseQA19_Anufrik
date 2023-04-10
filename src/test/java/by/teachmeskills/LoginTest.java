@@ -21,7 +21,7 @@ public class LoginTest {
         Assertions.assertThat(projectPage.isCreateButtonDisplayed())
                 .as("ProjectPage is not displayed")
                 .isTrue();
-        String expProjectName = "okk";
+        String expProjectName = "tyk";
         // String expProjecttYPE = "pUBLIC";
         projectPage.open().createNewProject(expProjectName);
         projectPage.open();
@@ -31,6 +31,7 @@ public class LoginTest {
       //         .map(SelenideElement::getText)
         assertThat(allProjectNames).as("List does not contains name of new project").contains(expProjectName);
         projectPage.openProject(expProjectName);
+        projectPage.openedProjectSettings();
         String actProjectName = new ProjectSettingsPage().getProjectName();
         assertThat(actProjectName).isEqualTo(expProjectName).as("Project Name is not equal");
         // String actProjectType = new ProjectSettingsPage().getProjectType()

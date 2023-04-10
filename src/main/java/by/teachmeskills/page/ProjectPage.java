@@ -8,14 +8,14 @@ import java.util.List;
 
 import static com.codeborne.selenide.Condition.enabled;
 import static com.codeborne.selenide.Condition.visible;
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.$$;
+import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 
 public class ProjectPage {
     public ProjectPage open() {
         Selenide.open("/projects");
         getWebDriver().manage().window().maximize();
+        $x("//th[text()='Project name ']").shouldBe(visible);
         return this;
     }
 

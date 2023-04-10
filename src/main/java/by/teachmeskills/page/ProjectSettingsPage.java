@@ -1,19 +1,22 @@
 package by.teachmeskills.page;
 
+import com.codeborne.selenide.Condition;
+import com.codeborne.selenide.Selenide;
 import org.openqa.selenium.By;
 
 import static com.codeborne.selenide.Selenide.$;
 
 public class ProjectSettingsPage {
-    public final String projectNameLocator ="project-name";
-    public final String projectCodeLocator ="project-code";
+    public By projectNameLocator =By.id("project-name");
+    public By projectCodeLocator =By.id("project-code");
     public String getProjectName(){
-        return $(By.id(projectNameLocator)).getText();
+        $(By.xpath("//span[text()='Archive project']")).shouldBe(Condition.visible);
+        return $(projectNameLocator).shouldBe(Condition.visible).getText();
     }
     public boolean isNotEmptyProjectCode(){
-       return $(By.id(projectCodeLocator)).isDisplayed();
+       return $(projectCodeLocator).shouldBe(Condition.visible).isDisplayed();
     }
-    public void isPublicProject(){
-
+    public boolean isPublicProject(){
+       return Selenide.$x("//input[@value='public']").isSelected();
     }
 }
